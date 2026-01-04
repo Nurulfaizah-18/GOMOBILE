@@ -4,7 +4,7 @@ class DateRangeNotifier extends StateNotifier<DateRange> {
   DateRangeNotifier()
       : super(DateRange(
           startDate: DateTime.now(),
-          endDate: DateTime.now().add(Duration(days: 1)),
+          endDate: DateTime.now().add(const Duration(days: 1)),
         ));
 
   void setDateRange(DateTime startDate, DateTime endDate) {

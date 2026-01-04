@@ -599,9 +599,9 @@ class _OrdersPageState extends ConsumerState<OrdersPage>
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Detail Pesanan',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppColors.textPrimary,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

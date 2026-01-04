@@ -1,0 +1,8 @@
+# Signing key configuration for release builds
+# Copy this file to key.properties and fill in your values
+# IMPORTANT: Do NOT commit key.properties to version control!
+
+storePassword=YOUR_KEYSTORE_PASSWORD
+keyPassword=YOUR_KEY_PASSWORD
+keyAlias=gomobile-key
+storeFile=../keys/gomobile-release-key.jks

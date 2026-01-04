@@ -44,7 +44,7 @@ class SearchPageEnhanced extends ConsumerWidget {
                     children: [
                       GradientText(
                         'Cari Kendaraan',
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [
                             AppColors.electricBlue,
                             AppColors.electricBlueDark,

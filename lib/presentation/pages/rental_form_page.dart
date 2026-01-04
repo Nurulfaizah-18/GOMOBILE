@@ -4,6 +4,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/utils/date_formatter.dart';
 import '../../domain/entities/vehicle_entity.dart';
 import '../providers/order_provider.dart';
+import '../widgets/vehicle_card.dart';
 
 class RentalFormPage extends ConsumerStatefulWidget {
   final VehicleEntity vehicle;
@@ -104,6 +105,7 @@ class _RentalFormPageState extends ConsumerState<RentalFormPage> {
         _showSuccessDialog();
       }
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Gagal membuat pesanan: $e'),
@@ -314,14 +316,11 @@ class _RentalFormPageState extends ConsumerState<RentalFormPage> {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.network(
-                widget.vehicle.imageUrl,
+              child: VehicleImage(
+                imageUrl: widget.vehicle.imageUrl,
+                width: 100,
+                height: 80,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const Icon(
-                  Icons.directions_car,
-                  color: AppColors.electricBlue,
-                  size: 40,
-                ),
               ),
             ),
           ),
@@ -389,7 +388,7 @@ class _RentalFormPageState extends ConsumerState<RentalFormPage> {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Icon(
+                child: const Icon(
                   Icons.arrow_forward,
                   color: AppColors.electricBlue,
                 ),
@@ -519,7 +518,7 @@ class _RentalFormPageState extends ConsumerState<RentalFormPage> {
             groupValue: _rentalType,
             onChanged: (value) => setState(() => _rentalType = value!),
           ),
-          Divider(color: AppColors.borderColor, height: 1),
+          const Divider(color: AppColors.borderColor, height: 1),
           _buildOptionTile(
             title: 'Dengan Supir',
             subtitle: '+${DateFormatter.formatPrice(_driverFeePerDay)}/hari',
@@ -550,7 +549,7 @@ class _RentalFormPageState extends ConsumerState<RentalFormPage> {
             groupValue: _pickupLocation,
             onChanged: (value) => setState(() => _pickupLocation = value!),
           ),
-          Divider(color: AppColors.borderColor, height: 1),
+          const Divider(color: AppColors.borderColor, height: 1),
           _buildOptionTile(
             title: 'Antar ke Lokasi',
             subtitle:
@@ -728,11 +727,11 @@ class _RentalFormPageState extends ConsumerState<RentalFormPage> {
       fillColor: AppColors.darkSurface,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.borderColor),
+        borderSide: const BorderSide(color: AppColors.borderColor),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.borderColor),
+        borderSide: const BorderSide(color: AppColors.borderColor),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
@@ -761,10 +760,10 @@ class _RentalFormPageState extends ConsumerState<RentalFormPage> {
         children: [
           _buildPaymentOption('cash', 'Tunai', Icons.payments,
               'Bayar langsung saat pengambilan'),
-          Divider(color: AppColors.borderColor, height: 1),
+          const Divider(color: AppColors.borderColor, height: 1),
           _buildPaymentOption('transfer', 'Transfer Bank',
               Icons.account_balance, 'BCA, Mandiri, BNI, BRI'),
-          Divider(color: AppColors.borderColor, height: 1),
+          const Divider(color: AppColors.borderColor, height: 1),
           _buildPaymentOption('ewallet', 'E-Wallet', Icons.wallet,
               'GoPay, OVO, Dana, ShopeePay'),
         ],

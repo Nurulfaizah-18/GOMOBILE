@@ -2,6 +2,8 @@
 ///
 /// Jika mengalami error dengan Riverpod, gunakan ini untuk perbaikan:
 
+import 'package:flutter/foundation.dart';
+
 // Tambahkan ke pubspec.yaml:
 /*
 dependencies:
@@ -306,5 +308,5 @@ void setupAndRunApp() {
   // 3. Initialize Firebase
   // 4. Setup notifications
   // 5. Load cached data
-  print('Ready to run app');
+  debugPrint('Ready to run app');
 }

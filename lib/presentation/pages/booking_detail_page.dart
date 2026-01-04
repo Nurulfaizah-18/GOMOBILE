@@ -6,6 +6,7 @@ import '../../domain/entities/vehicle_entity.dart';
 import '../providers/cart_provider.dart';
 import '../providers/date_range_provider.dart';
 import '../widgets/date_range_picker_widget.dart';
+import '../widgets/vehicle_card.dart';
 
 class BookingPage extends ConsumerStatefulWidget {
   final VehicleEntity vehicle;
@@ -124,15 +125,13 @@ class _BookingPageState extends ConsumerState<BookingPage> {
                           color: AppColors.darkSurface,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: widget.vehicle.imageUrl.startsWith('http')
-                            ? Image.network(
-                                widget.vehicle.imageUrl,
-                                fit: BoxFit.cover,
-                              )
-                            : Icon(
-                                Icons.directions_car,
-                                color: AppColors.electricBlue,
-                              ),
+                        child: VehicleImage(
+                          imageUrl: widget.vehicle.imageUrl,
+                          width: 80,
+                          height: 80,
+                          fit: BoxFit.cover,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(

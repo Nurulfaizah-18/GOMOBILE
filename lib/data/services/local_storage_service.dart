@@ -163,27 +163,8 @@ class LocalStorageService {
   static List<Map<String, dynamic>> loadUsers() {
     final String? usersJson = prefs.getString(_usersKey);
     if (usersJson == null) {
-      // Default users
-      return [
-        {
-          'id': 'admin_001',
-          'name': 'Administrator',
-          'email': 'admin@gomobile.com',
-          'password': 'admin123',
-          'role': 'admin',
-          'phone': '081234567890',
-          'createdAt': DateTime.now().toIso8601String(),
-        },
-        {
-          'id': 'user_001',
-          'name': 'John Doe',
-          'email': 'user@gomobile.com',
-          'password': 'user123',
-          'role': 'user',
-          'phone': '081234567891',
-          'createdAt': DateTime.now().toIso8601String(),
-        },
-      ];
+      // No default users - user must register first
+      return [];
     }
     return List<Map<String, dynamic>>.from(jsonDecode(usersJson));
   }
@@ -195,6 +176,11 @@ class LocalStorageService {
     // Check if email already exists
     if (users.any((u) => u['email'] == user['email'])) {
       return false; // Email already registered
+    }
+
+    // First registered user becomes admin
+    if (users.isEmpty) {
+      user['role'] = 'admin';
     }
 
     users.add(user);

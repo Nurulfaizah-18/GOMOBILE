@@ -101,7 +101,7 @@ class NotificationPage extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Text(
+          const Text(
             'Notifikasi booking baru akan muncul di sini',
             style: TextStyle(
               color: AppColors.textSecondary,
@@ -231,7 +231,7 @@ class NotificationPage extends ConsumerWidget {
                     const SizedBox(height: 4),
                     Text(
                       notification.message,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.textSecondary,
                         fontSize: 12,
                       ),
@@ -366,7 +366,7 @@ class NotificationPage extends ConsumerWidget {
             width: 80,
             child: Text(
               label,
-              style: TextStyle(color: AppColors.textSecondary, fontSize: 12),
+              style: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
             ),
           ),
           Expanded(

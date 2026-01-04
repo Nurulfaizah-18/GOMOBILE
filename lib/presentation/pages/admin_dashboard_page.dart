@@ -300,7 +300,7 @@ class AdminDashboardPage extends ConsumerWidget {
                     unreadCount > 0
                         ? 'Ada $unreadCount notifikasi belum dibaca'
                         : 'Lihat semua notifikasi',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: 12,
                     ),
@@ -483,7 +483,7 @@ class AdminDashboardPage extends ConsumerWidget {
           const SizedBox(height: 4),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12,
               color: AppColors.textSecondary,
             ),
@@ -543,7 +543,7 @@ class AdminDashboardPage extends ConsumerWidget {
                     const SizedBox(height: 4),
                     Text(
                       subtitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 12,
                         color: AppColors.textSecondary,
                       ),
@@ -551,7 +551,7 @@ class AdminDashboardPage extends ConsumerWidget {
                   ],
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.chevron_right,
                 color: AppColors.borderColor,
               ),

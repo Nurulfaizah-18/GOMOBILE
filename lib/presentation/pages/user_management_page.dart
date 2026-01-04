@@ -48,18 +48,18 @@ class _UserManagementPageState extends ConsumerState<UserManagementPage> {
               style: const TextStyle(color: AppColors.textPrimary),
               decoration: InputDecoration(
                 hintText: 'Cari pengguna...',
-                hintStyle: TextStyle(color: AppColors.textSecondary),
+                hintStyle: const TextStyle(color: AppColors.textSecondary),
                 prefixIcon:
                     const Icon(Icons.search, color: AppColors.electricBlue),
                 filled: true,
                 fillColor: AppColors.darkCard,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: AppColors.borderColor),
+                  borderSide: const BorderSide(color: AppColors.borderColor),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: AppColors.borderColor),
+                  borderSide: const BorderSide(color: AppColors.borderColor),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -108,7 +108,7 @@ class _UserManagementPageState extends ConsumerState<UserManagementPage> {
             ),
           ),
           const SizedBox(height: 8),
-          Text(
+          const Text(
             'Pengguna yang mendaftar akan muncul di sini',
             style: TextStyle(
               color: AppColors.textSecondary,
@@ -250,7 +250,7 @@ class _UserManagementPageState extends ConsumerState<UserManagementPage> {
                     const SizedBox(height: 4),
                     Text(
                       user['email'],
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.textSecondary,
                         fontSize: 12,
                       ),
@@ -261,7 +261,7 @@ class _UserManagementPageState extends ConsumerState<UserManagementPage> {
 
               // Action Button
               PopupMenuButton<String>(
-                icon: Icon(Icons.more_vert, color: AppColors.textSecondary),
+                icon: const Icon(Icons.more_vert, color: AppColors.textSecondary),
                 color: AppColors.darkCard,
                 onSelected: (value) {
                   _handleUserAction(context, value, user);
@@ -329,7 +329,7 @@ class _UserManagementPageState extends ConsumerState<UserManagementPage> {
         const SizedBox(width: 4),
         Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             color: AppColors.textSecondary,
             fontSize: 11,
           ),
@@ -360,9 +360,9 @@ class _UserManagementPageState extends ConsumerState<UserManagementPage> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppColors.darkCard,
-        title: Text(
+        title: const Text(
           'Detail Pengguna',
-          style: const TextStyle(color: AppColors.textPrimary),
+          style: TextStyle(color: AppColors.textPrimary),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -398,7 +398,7 @@ class _UserManagementPageState extends ConsumerState<UserManagementPage> {
             width: 100,
             child: Text(
               label,
-              style: TextStyle(color: AppColors.textSecondary, fontSize: 14),
+              style: const TextStyle(color: AppColors.textSecondary, fontSize: 14),
             ),
           ),
           Expanded(

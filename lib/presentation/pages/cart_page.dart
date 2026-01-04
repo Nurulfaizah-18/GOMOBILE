@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/app_colors.dart';
 import '../providers/cart_provider.dart';
 import '../providers/discount_provider.dart';
+import '../widgets/vehicle_card.dart';
 
 class CartPage extends ConsumerStatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _CartPageState extends ConsumerState<CartPage> {
     return Scaffold(
       backgroundColor: AppColors.darkBg,
       appBar: AppBar(
-        title: Text('Keranjang Sewa'),
+        title: const Text('Keranjang Sewa'),
         elevation: 0,
       ),
       body: cartItems.isEmpty
@@ -43,17 +44,17 @@ class _CartPageState extends ConsumerState<CartPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.shopping_cart_outlined,
                     size: 80,
                     color: AppColors.textSecondary,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Text(
                     'Keranjang Kosong',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     'Tambahkan kendaraan untuk memulai sewa',
                     style: Theme.of(context).textTheme.bodyMedium,
@@ -65,36 +66,28 @@ class _CartPageState extends ConsumerState<CartPage> {
               children: [
                 Expanded(
                   child: ListView.builder(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     itemCount: cartItems.length,
                     itemBuilder: (context, index) {
                       final item = cartItems[index];
                       return Card(
                         color: AppColors.darkCard,
-                        margin: EdgeInsets.only(bottom: 12),
+                        margin: const EdgeInsets.only(bottom: 12),
                         child: Padding(
-                          padding: EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(12),
                           child: Row(
                             children: [
                               // Vehicle Image
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
-                                child: Image.network(
-                                  item.vehicle.imageUrl,
+                                child: VehicleImage(
+                                  imageUrl: item.vehicle.imageUrl,
                                   width: 80,
                                   height: 80,
                                   fit: BoxFit.cover,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Container(
-                                      width: 80,
-                                      height: 80,
-                                      color: AppColors.darkSurface,
-                                      child: Icon(Icons.directions_car),
-                                    );
-                                  },
                                 ),
                               ),
-                              SizedBox(width: 12),
+                              const SizedBox(width: 12),
                               // Info
                               Expanded(
                                 child: Column(
@@ -106,7 +99,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                           .textTheme
                                           .titleMedium,
                                     ),
-                                    SizedBox(height: 4),
+                                    const SizedBox(height: 4),
                                     Text(
                                       '${item.rentalDays} hari',
                                       style: Theme.of(context)
@@ -116,7 +109,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                             color: AppColors.textSecondary,
                                           ),
                                     ),
-                                    SizedBox(height: 8),
+                                    const SizedBox(height: 8),
                                     Text(
                                       'Rp ${item.totalPrice.toStringAsFixed(0)}',
                                       style: Theme.of(context)
@@ -137,7 +130,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                       .read(cartProvider.notifier)
                                       .removeFromCart(item.id);
                                 },
-                                icon: Icon(Icons.delete_outline),
+                                icon: const Icon(Icons.delete_outline),
                                 color: AppColors.error,
                               ),
                             ],
@@ -149,8 +142,8 @@ class _CartPageState extends ConsumerState<CartPage> {
                 ),
                 // Payment Section
                 Container(
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(16),
+                  decoration: const BoxDecoration(
                     color: AppColors.darkCard,
                     border: Border(
                       top: BorderSide(color: AppColors.borderColor),
@@ -195,7 +188,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.local_offer,
+                                const Icon(Icons.local_offer,
                                     color: AppColors.success, size: 16),
                                 const SizedBox(width: 4),
                                 Text(
@@ -260,7 +253,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -275,17 +268,17 @@ class _CartPageState extends ConsumerState<CartPage> {
                               ),
                             );
                           },
-                          child: Text('Lanjut ke Pembayaran'),
+                          child: const Text('Lanjut ke Pembayaran'),
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       SizedBox(
                         width: double.infinity,
                         child: OutlinedButton(
                           onPressed: () {
                             ref.read(cartProvider.notifier).clearCart();
                           },
-                          child: Text('Kosongkan Keranjang'),
+                          child: const Text('Kosongkan Keranjang'),
                         ),
                       ),
                     ],
@@ -369,12 +362,12 @@ class _CartPageState extends ConsumerState<CartPage> {
             child: TextField(
               controller: _promoController,
               style: const TextStyle(color: AppColors.textPrimary),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Masukkan kode promo',
                 hintStyle: TextStyle(color: AppColors.textSecondary),
                 border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                prefixIcon: const Icon(Icons.local_offer_outlined,
+                contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                prefixIcon: Icon(Icons.local_offer_outlined,
                     color: AppColors.textSecondary),
               ),
             ),

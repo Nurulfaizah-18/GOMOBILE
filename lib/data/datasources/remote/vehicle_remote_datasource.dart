@@ -17,7 +17,7 @@ class VehicleRemoteDataSourceImpl implements VehicleRemoteDataSource {
   // Persistent storage using LocalStorageService
 
   // Default vehicle if storage is empty
-  static final VehicleModel _defaultVehicle = VehicleModel(
+  static const VehicleModel _defaultVehicle = VehicleModel(
     id: 'V001',
     name: 'Avanza',
     brand: 'Toyota',

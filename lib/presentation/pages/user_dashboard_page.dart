@@ -25,7 +25,7 @@ class UserDashboardPage extends ConsumerWidget {
           child: Column(
             children: [
               // Dashboard Header dengan greeting dan user info
-              DashboardHeader(),
+              const DashboardHeader(),
               const SizedBox(height: 24),
 
               // Quick Stats Section
@@ -268,7 +268,7 @@ class UserDashboardPage extends ConsumerWidget {
                   const SizedBox(height: 2),
                   Text(
                     subtitle,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12,
                       color: AppColors.textSecondary,
                     ),
@@ -276,7 +276,7 @@ class UserDashboardPage extends ConsumerWidget {
                 ],
               ),
             ),
-            Icon(
+            const Icon(
               Icons.chevron_right,
               color: AppColors.borderColor,
               size: 20,
@@ -393,7 +393,7 @@ class UserDashboardPage extends ConsumerWidget {
           valueColor: AlwaysStoppedAnimation(AppColors.electricBlue),
         ),
       ),
-      error: (e, st) => Center(
+      error: (e, st) => const Center(
         child: Text(
           'Gagal memuat kendaraan',
           style: TextStyle(color: AppColors.error),
@@ -433,25 +433,14 @@ class UserDashboardPage extends ConsumerWidget {
                       topRight: Radius.circular(12),
                     ),
                   ),
-                  child: ClipRRect(
+                  child: VehicleImage(
+                    imageUrl: vehicle.imageUrl,
+                    width: double.infinity,
+                    height: 100,
+                    fit: BoxFit.cover,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
-                    ),
-                    child: Image.network(
-                      vehicle.imageUrl,
-                      width: double.infinity,
-                      height: 100,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Center(
-                          child: Icon(
-                            Icons.directions_car,
-                            color: AppColors.electricBlue,
-                            size: 40,
-                          ),
-                        );
-                      },
                     ),
                   ),
                 ),

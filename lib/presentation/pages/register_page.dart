@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/app_colors.dart';
+import '../../data/services/local_storage_service.dart';
 import 'login_page.dart';
 import 'main_page.dart';
 
@@ -65,6 +66,9 @@ class _RegisterPageState extends ConsumerState<RegisterPage>
     }
 
     if (_formKey.currentState!.validate()) {
+      // Check if this will be the first user (admin)
+      final isFirstUser = LocalStorageService.loadUsers().isEmpty;
+
       final success = await ref.read(authProvider.notifier).register(
             _nameController.text.trim(),
             _emailController.text.trim(),
@@ -73,9 +77,12 @@ class _RegisterPageState extends ConsumerState<RegisterPage>
 
       if (success && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Registrasi berhasil!'),
+          SnackBar(
+            content: Text(isFirstUser
+                ? 'Registrasi berhasil! Anda terdaftar sebagai Admin.'
+                : 'Registrasi berhasil!'),
             backgroundColor: AppColors.success,
+            duration: const Duration(seconds: 3),
           ),
         );
         Navigator.of(context).pushReplacement(
@@ -171,36 +178,84 @@ class _RegisterPageState extends ConsumerState<RegisterPage>
     return Column(
       children: [
         Container(
-          width: 80,
-          height: 80,
+          width: 90,
+          height: 90,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [
-                AppColors.electricBlue,
-                AppColors.electricBlue.withValues(alpha: 0.6),
+                Color(0xFF00D4FF),
+                Color(0xFF0066FF),
+                Color(0xFF6B00FF),
               ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
             boxShadow: [
               BoxShadow(
-                color: AppColors.electricBlue.withValues(alpha: 0.5),
-                blurRadius: 20,
+                color: const Color(0xFF00D4FF).withValues(alpha: 0.4),
+                blurRadius: 25,
+                spreadRadius: 3,
+              ),
+              BoxShadow(
+                color: const Color(0xFF6B00FF).withValues(alpha: 0.3),
+                blurRadius: 35,
                 spreadRadius: 2,
+                offset: const Offset(0, 8),
               ),
             ],
           ),
-          child: const Icon(
-            Icons.person_add,
-            size: 40,
-            color: Colors.white,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              const Positioned(
+                top: 18,
+                child: Icon(
+                  Icons.person_add_rounded,
+                  size: 36,
+                  color: Colors.white,
+                ),
+              ),
+              Positioned(
+                bottom: 16,
+                right: 18,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.2),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.directions_car,
+                    size: 12,
+                    color: Color(0xFF0066FF),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 16),
-        Text(
-          'Bergabung dengan GOMOBILE',
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.white.withValues(alpha: 0.8),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+          ),
+          child: const Text(
+            '✨ Bergabung dengan GOMOBILE',
+            style: TextStyle(
+              fontSize: 13,
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ],
@@ -245,6 +300,36 @@ class _RegisterPageState extends ConsumerState<RegisterPage>
                 fontSize: 14,
               ),
             ),
+            // Show admin notice if first user
+            if (LocalStorageService.loadUsers().isEmpty) ...[
+              const SizedBox(height: 12),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: AppColors.success.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                      color: AppColors.success.withValues(alpha: 0.3)),
+                ),
+                child: const Row(
+                  children: [
+                    Icon(Icons.admin_panel_settings,
+                        color: AppColors.success, size: 20),
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'Pendaftaran pertama akan menjadi Admin',
+                        style: TextStyle(
+                          color: AppColors.success,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
             const SizedBox(height: 24),
 
             // Name Field
@@ -477,7 +562,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage>
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: AppColors.borderColor),
+              borderSide: const BorderSide(color: AppColors.borderColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),

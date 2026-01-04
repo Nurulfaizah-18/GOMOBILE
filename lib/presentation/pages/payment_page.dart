@@ -231,10 +231,10 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
         border:
             Border.all(color: AppColors.electricBlue.withValues(alpha: 0.3)),
       ),
-      child: Row(
+      child: const Row(
         children: [
           Icon(Icons.info_outline, color: AppColors.electricBlue, size: 20),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
           Expanded(
             child: Text(
               'Pantau status pembayaran rental kendaraan Anda di sini',
@@ -346,7 +346,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
           const SizedBox(height: 4),
           Text(
             '$count transaksi',
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 12,
             ),
@@ -358,7 +358,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
 
   Widget _buildPaymentList(List<PaymentEntity> payments, bool isAdmin) {
     if (payments.isEmpty) {
-      return Center(
+      return const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -367,7 +367,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
               size: 80,
               color: AppColors.borderColor,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
               'Tidak ada pembayaran',
               style: TextStyle(
@@ -425,7 +425,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
                           const SizedBox(height: 4),
                           Text(
                             'Order: ${payment.orderId}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: AppColors.textSecondary,
                               fontSize: 12,
                             ),
@@ -437,7 +437,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
                   ],
                 ),
                 const SizedBox(height: 12),
-                Divider(color: AppColors.borderColor, height: 1),
+                const Divider(color: AppColors.borderColor, height: 1),
                 const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -452,7 +452,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
                         const SizedBox(width: 8),
                         Text(
                           _getPaymentMethodName(payment.method),
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: AppColors.textSecondary,
                             fontSize: 12,
                           ),
@@ -475,7 +475,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
                   children: [
                     Text(
                       _formatDateTime(payment.createdAt),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.textSecondary,
                         fontSize: 11,
                       ),
@@ -538,13 +538,13 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
                           border: Border.all(
                               color: AppColors.success.withValues(alpha: 0.3)),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Icon(Icons.check_circle,
                                 color: AppColors.success, size: 14),
-                            const SizedBox(width: 4),
-                            const Text(
+                            SizedBox(width: 4),
+                            Text(
                               'Lunas',
                               style: TextStyle(
                                 color: AppColors.success,
@@ -565,13 +565,13 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
                           border: Border.all(
                               color: AppColors.error.withValues(alpha: 0.3)),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Icon(Icons.cancel,
                                 color: AppColors.error, size: 14),
-                            const SizedBox(width: 4),
-                            const Text(
+                            SizedBox(width: 4),
+                            Text(
                               'Gagal',
                               style: TextStyle(
                                 color: AppColors.error,
@@ -616,9 +616,9 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
               ),
             ),
             const SizedBox(height: 20),
-            Text(
+            const Text(
               'Konfirmasi Pembayaran',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -627,7 +627,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
             const SizedBox(height: 8),
             Text(
               'Order: ${payment.orderId} - ${payment.vehicleName}',
-              style: TextStyle(color: AppColors.textSecondary),
+              style: const TextStyle(color: AppColors.textSecondary),
             ),
             Text(
               'Jumlah: ${DateFormatter.formatPrice(payment.amount)}',
@@ -967,7 +967,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
                     _buildDetailItem('ID Transaksi', payment.transactionId!),
 
                   const SizedBox(height: 16),
-                  Divider(color: AppColors.borderColor),
+                  const Divider(color: AppColors.borderColor),
                   const SizedBox(height: 16),
 
                   // Total Amount
@@ -1066,7 +1066,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
         children: [
           Text(
             label,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 14,
             ),
@@ -1146,7 +1146,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text(
+                  child: const Text(
                     'Batal',
                     style: TextStyle(color: AppColors.textSecondary),
                   ),
@@ -1214,7 +1214,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
                   ),
                   Text(
                     subtitle,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: 12,
                     ),
@@ -1238,12 +1238,12 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
       builder: (context) => AlertDialog(
         backgroundColor: AppColors.darkCard,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        content: Column(
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const CircularProgressIndicator(color: AppColors.electricBlue),
-            const SizedBox(height: 16),
-            const Text(
+            CircularProgressIndicator(color: AppColors.electricBlue),
+            SizedBox(height: 16),
+            Text(
               'Memproses pembayaran...',
               style: TextStyle(color: AppColors.textPrimary),
             ),
@@ -1254,6 +1254,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
 
     // Simulate payment process
     Future.delayed(const Duration(seconds: 2), () {
+      if (!mounted) return;
       Navigator.pop(context); // Close loading dialog
 
       // Update payment status
@@ -1262,6 +1263,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
           .updatePaymentStatus(payment.id, PaymentStatus.completed);
 
       // Show success dialog
+      if (!mounted) return;
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -1296,7 +1298,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage>
               Text(
                 'Pembayaran ${DateFormatter.formatPrice(payment.amount)} telah berhasil diproses.',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: AppColors.textSecondary),
+                style: const TextStyle(color: AppColors.textSecondary),
               ),
               const SizedBox(height: 24),
               SizedBox(

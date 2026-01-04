@@ -8,6 +8,7 @@ import '../providers/date_range_provider.dart';
 import '../providers/favorites_provider.dart';
 import '../widgets/date_range_picker_widget.dart';
 import '../widgets/specification_item.dart';
+import '../widgets/vehicle_card.dart';
 import 'booking_page.dart';
 import 'rental_form_page.dart';
 
@@ -89,18 +90,11 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                 children: [
                   Container(
                     color: AppColors.darkSurface,
-                    child: Image.network(
-                      widget.vehicle.imageUrl,
+                    child: VehicleImage(
+                      imageUrl: widget.vehicle.imageUrl,
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Center(
-                          child: Icon(
-                            Icons.directions_car,
-                            size: 100,
-                            color: AppColors.electricBlue,
-                          ),
-                        );
-                      },
+                      width: double.infinity,
+                      height: double.infinity,
                     ),
                   ),
                   // Gradient overlay
@@ -123,7 +117,7 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
           // Content
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -138,7 +132,7 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                             widget.vehicle.name,
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text(
                             widget.vehicle.brand,
                             style: Theme.of(context).textTheme.bodyLarge,
@@ -146,7 +140,7 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                         ],
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           horizontal: 12,
                           vertical: 8,
                         ),
@@ -156,8 +150,8 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.star, size: 18, color: Colors.amber),
-                            SizedBox(width: 4),
+                            const Icon(Icons.star, size: 18, color: Colors.amber),
+                            const SizedBox(width: 4),
                             Text(
                               '${widget.vehicle.rating}',
                               style: Theme.of(context).textTheme.titleMedium,
@@ -167,17 +161,17 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // Specifications
                   Text(
                     'Spesifikasi Kendaraan',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   GridView.count(
                     crossAxisCount: 2,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     mainAxisSpacing: 12,
                     crossAxisSpacing: 12,
                     childAspectRatio: 1.2,
@@ -212,18 +206,18 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   // Description
                   Text(
                     'Deskripsi',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     widget.vehicle.description,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   // Date Range Picker
                   DateRangePickerWidget(
                     initialStartDate: _startDate,
@@ -235,15 +229,15 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                       });
                     },
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   // Rating and Review Section
                   Text(
                     'Beri Penilaian',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: AppColors.darkCard,
                       borderRadius: BorderRadius.circular(12),
@@ -270,35 +264,35 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                             );
                           }),
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         TextField(
                           controller: _reviewController,
                           maxLines: 3,
                           decoration: InputDecoration(
                             hintText: 'Tulis ulasan Anda...',
-                            hintStyle: TextStyle(color: AppColors.borderColor),
+                            hintStyle: const TextStyle(color: AppColors.borderColor),
                             filled: true,
                             fillColor: AppColors.darkBg,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide:
-                                  BorderSide(color: AppColors.borderColor),
+                                  const BorderSide(color: AppColors.borderColor),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide:
-                                  BorderSide(color: AppColors.borderColor),
+                                  const BorderSide(color: AppColors.borderColor),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: AppColors.electricBlue,
                               ),
                             ),
                           ),
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
@@ -323,16 +317,16 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                               backgroundColor: AppColors.electricBlue,
                               disabledBackgroundColor: AppColors.borderColor,
                             ),
-                            child: Text('Kirim Penilaian'),
+                            child: const Text('Kirim Penilaian'),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   // Price Summary
                   Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: AppColors.darkCard,
                       borderRadius: BorderRadius.circular(16),
@@ -355,7 +349,7 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -369,9 +363,9 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 12),
-                        Divider(color: AppColors.borderColor),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
+                        const Divider(color: AppColors.borderColor),
+                        const SizedBox(height: 12),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -397,7 +391,7 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   // Booking Button
                   SizedBox(
                     width: double.infinity,
@@ -414,15 +408,15 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                           ),
                         );
                       },
-                      icon: Icon(Icons.car_rental),
-                      label: Text('Sewa Sekarang'),
+                      icon: const Icon(Icons.car_rental),
+                      label: const Text('Sewa Sekarang'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.success,
-                        padding: EdgeInsets.symmetric(vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
                       ),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   // Quick Booking Button
                   SizedBox(
                     width: double.infinity,
@@ -439,16 +433,16 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
                           ),
                         );
                       },
-                      icon: Icon(Icons.flash_on),
-                      label: Text('Booking Cepat'),
+                      icon: const Icon(Icons.flash_on),
+                      label: const Text('Booking Cepat'),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: AppColors.electricBlue,
-                        side: BorderSide(color: AppColors.electricBlue),
-                        padding: EdgeInsets.symmetric(vertical: 14),
+                        side: const BorderSide(color: AppColors.electricBlue),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
                       ),
                     ),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   // Add to Cart Button
                   SizedBox(
                     width: double.infinity,
@@ -472,11 +466,11 @@ class _VehicleDetailPageState extends ConsumerState<VehicleDetailPage> {
 
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.shopping_cart_outlined),
-                      label: Text('Tambah ke Keranjang'),
+                      icon: const Icon(Icons.shopping_cart_outlined),
+                      label: const Text('Tambah ke Keranjang'),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),

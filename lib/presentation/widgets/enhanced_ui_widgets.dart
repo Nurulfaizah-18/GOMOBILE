@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import '../../core/theme/app_colors.dart';
 
 /// Enhanced vehicle card dengan gradient, shadow, dan animated hover effect
@@ -49,6 +50,61 @@ class _EnhancedVehicleCardState extends State<EnhancedVehicleCard>
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  bool _isLocalFile(String imageUrl) {
+    return imageUrl.startsWith('/') ||
+        imageUrl.startsWith('file://') ||
+        imageUrl.contains('cache') ||
+        imageUrl.contains('data/');
+  }
+
+  Widget _buildVehicleImage(String imageUrl) {
+    if (_isLocalFile(imageUrl)) {
+      final file = File(imageUrl.replaceFirst('file://', ''));
+      if (file.existsSync()) {
+        return Image.file(
+          file,
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: 160,
+          errorBuilder: (context, error, stackTrace) => _buildPlaceholder(),
+        );
+      }
+      return _buildPlaceholder();
+    } else if (imageUrl.startsWith('http')) {
+      return Image.network(
+        imageUrl,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: 160,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded /
+                      loadingProgress.expectedTotalBytes!
+                  : null,
+              valueColor: const AlwaysStoppedAnimation(AppColors.electricBlue),
+              strokeWidth: 2,
+            ),
+          );
+        },
+        errorBuilder: (context, error, stackTrace) => _buildPlaceholder(),
+      );
+    }
+    return _buildPlaceholder();
+  }
+
+  Widget _buildPlaceholder() {
+    return const Center(
+      child: Icon(
+        Icons.directions_car,
+        color: AppColors.electricBlue,
+        size: 60,
+      ),
+    );
   }
 
   void _onTapDown(TapDownDetails details) {
@@ -119,13 +175,7 @@ class _EnhancedVehicleCardState extends State<EnhancedVehicleCard>
                       end: Alignment.bottomRight,
                     ),
                   ),
-                  child: Center(
-                    child: Icon(
-                      Icons.directions_car,
-                      color: AppColors.electricBlue,
-                      size: 60,
-                    ),
-                  ),
+                  child: _buildVehicleImage(widget.image),
                 ),
 
                 // Content
@@ -213,7 +263,7 @@ class _EnhancedVehicleCardState extends State<EnhancedVehicleCard>
                             const SizedBox(width: 4),
                             Text(
                               '(${widget.reviews})',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 10,
                                 color: AppColors.textSecondary,
                               ),
@@ -467,7 +517,7 @@ class _AnimatedPromoBannerState extends State<AnimatedPromoBanner>
             height: 140,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 colors: [
                   AppColors.electricBlue,
                   AppColors.electricBlueDark,

@@ -114,10 +114,6 @@ class _LoginPageState extends ConsumerState<LoginPage>
 
                       // Register Link
                       _buildRegisterLink(),
-                      const SizedBox(height: 24),
-
-                      // Demo Credentials
-                      _buildDemoCredentials(),
                     ],
                   ),
                 ),
@@ -133,46 +129,101 @@ class _LoginPageState extends ConsumerState<LoginPage>
     return Column(
       children: [
         Container(
-          width: 100,
-          height: 100,
+          width: 110,
+          height: 110,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [
-                AppColors.electricBlue,
-                AppColors.electricBlue.withValues(alpha: 0.6),
+                Color(0xFF00D4FF),
+                Color(0xFF0066FF),
+                Color(0xFF6B00FF),
               ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
             boxShadow: [
               BoxShadow(
-                color: AppColors.electricBlue.withValues(alpha: 0.5),
-                blurRadius: 25,
+                color: const Color(0xFF00D4FF).withValues(alpha: 0.5),
+                blurRadius: 30,
+                spreadRadius: 5,
+              ),
+              BoxShadow(
+                color: const Color(0xFF6B00FF).withValues(alpha: 0.3),
+                blurRadius: 40,
                 spreadRadius: 3,
+                offset: const Offset(0, 10),
               ),
             ],
           ),
-          child: const Icon(
-            Icons.directions_car,
-            size: 50,
-            color: Colors.white,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Car icon
+              const Positioned(
+                top: 25,
+                child: Icon(
+                  Icons.directions_car_rounded,
+                  size: 42,
+                  color: Colors.white,
+                ),
+              ),
+              // Key icon overlay
+              Positioned(
+                bottom: 22,
+                right: 24,
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.2),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.key,
+                    size: 16,
+                    color: Color(0xFF0066FF),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(height: 20),
-        const Text(
-          'GOMOBILE',
-          style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            letterSpacing: 3,
+        const SizedBox(height: 24),
+        ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [Color(0xFF00D4FF), Color(0xFFFFFFFF)],
+          ).createShader(bounds),
+          child: const Text(
+            'GOMOBILE',
+            style: TextStyle(
+              fontSize: 38,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+              letterSpacing: 4,
+            ),
           ),
         ),
         const SizedBox(height: 8),
-        Text(
-          'Selamat Datang Kembali',
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.white.withValues(alpha: 0.8),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+          ),
+          child: const Text(
+            ' Selamat Datang Kembali',
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ],
@@ -372,7 +423,7 @@ class _LoginPageState extends ConsumerState<LoginPage>
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: AppColors.borderColor),
+              borderSide: const BorderSide(color: AppColors.borderColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
@@ -414,89 +465,6 @@ class _LoginPageState extends ConsumerState<LoginPage>
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildDemoCredentials() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.darkCard.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.borderColor),
-      ),
-      child: Column(
-        children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.info_outline, color: AppColors.warning, size: 18),
-              SizedBox(width: 8),
-              Text(
-                'Akun Demo',
-                style: TextStyle(
-                  color: AppColors.warning,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          _buildCredentialItem('Admin', 'admin@gomobile.com', 'admin123'),
-          const SizedBox(height: 8),
-          _buildCredentialItem('User', 'user@gomobile.com', 'user123'),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCredentialItem(String role, String email, String password) {
-    return GestureDetector(
-      onTap: () {
-        _emailController.text = email;
-        _passwordController.text = password;
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        decoration: BoxDecoration(
-          color: AppColors.darkSurface,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: AppColors.electricBlue.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Text(
-                role,
-                style: const TextStyle(
-                  color: AppColors.electricBlue,
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                email,
-                style: const TextStyle(
-                  color: AppColors.textSecondary,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-            const Icon(
-              Icons.touch_app,
-              color: AppColors.textSecondary,
-              size: 16,
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

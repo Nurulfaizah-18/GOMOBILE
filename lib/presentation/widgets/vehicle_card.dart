@@ -1,5 +1,104 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import '../../core/theme/app_colors.dart';
+
+/// Helper widget untuk menampilkan gambar dari URL atau path lokal
+class VehicleImage extends StatelessWidget {
+  final String imageUrl;
+  final double? width;
+  final double? height;
+  final BoxFit fit;
+  final BorderRadius? borderRadius;
+
+  const VehicleImage({
+    Key? key,
+    required this.imageUrl,
+    this.width,
+    this.height,
+    this.fit = BoxFit.cover,
+    this.borderRadius,
+  }) : super(key: key);
+
+  bool get _isLocalFile {
+    return imageUrl.startsWith('/') ||
+        imageUrl.startsWith('file://') ||
+        imageUrl.contains('cache') ||
+        imageUrl.contains('data/');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget imageWidget;
+
+    if (_isLocalFile) {
+      // Gambar lokal dari device
+      final file = File(imageUrl.replaceFirst('file://', ''));
+      if (file.existsSync()) {
+        imageWidget = Image.file(
+          file,
+          width: width,
+          height: height,
+          fit: fit,
+          errorBuilder: (context, error, stackTrace) {
+            return _buildPlaceholder();
+          },
+        );
+      } else {
+        imageWidget = _buildPlaceholder();
+      }
+    } else if (imageUrl.startsWith('http')) {
+      // Gambar dari URL
+      imageWidget = Image.network(
+        imageUrl,
+        width: width,
+        height: height,
+        fit: fit,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded /
+                      loadingProgress.expectedTotalBytes!
+                  : null,
+              valueColor: const AlwaysStoppedAnimation(AppColors.electricBlue),
+              strokeWidth: 2,
+            ),
+          );
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return _buildPlaceholder();
+        },
+      );
+    } else {
+      imageWidget = _buildPlaceholder();
+    }
+
+    if (borderRadius != null) {
+      return ClipRRect(
+        borderRadius: borderRadius!,
+        child: imageWidget,
+      );
+    }
+
+    return imageWidget;
+  }
+
+  Widget _buildPlaceholder() {
+    return Container(
+      width: width,
+      height: height,
+      color: AppColors.darkSurface,
+      child: const Center(
+        child: Icon(
+          Icons.directions_car,
+          size: 50,
+          color: AppColors.electricBlue,
+        ),
+      ),
+    );
+  }
+}
 
 class VehicleCard extends StatelessWidget {
   final String imageUrl;
@@ -79,20 +178,18 @@ class VehicleCard extends StatelessWidget {
                 Container(
                   height: 150,
                   width: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(16)),
                     color: AppColors.darkSurface,
                   ),
-                  child: Image.network(
-                    imageUrl,
+                  child: VehicleImage(
+                    imageUrl: imageUrl,
+                    height: 150,
+                    width: double.infinity,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Center(
-                        child: Icon(Icons.directions_car,
-                            size: 60, color: AppColors.electricBlue),
-                      );
-                    },
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(16)),
                   ),
                 ),
                 // Favorite Button
@@ -102,7 +199,7 @@ class VehicleCard extends StatelessWidget {
                   child: GestureDetector(
                     onTap: onFavoriteTap,
                     child: Container(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.black.withValues(alpha: 0.5),
                         shape: BoxShape.circle,
@@ -121,7 +218,7 @@ class VehicleCard extends StatelessWidget {
             ),
             // Content
             Padding(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -132,22 +229,22 @@ class VehicleCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     brand,
                     style: Theme.of(context).textTheme.labelSmall,
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   // Rating
                   Row(
                     children: [
-                      Icon(Icons.star, size: 14, color: Colors.amber),
-                      SizedBox(width: 4),
+                      const Icon(Icons.star, size: 14, color: Colors.amber),
+                      const SizedBox(width: 4),
                       Text(
                         '$rating',
                         style: Theme.of(context).textTheme.labelSmall,
                       ),
-                      SizedBox(width: 4),
+                      const SizedBox(width: 4),
                       Text(
                         '($reviewCount)',
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
@@ -156,7 +253,7 @@ class VehicleCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   // Price
                   Text(
                     'Rp ${pricePerDay.toStringAsFixed(0)}/hari',

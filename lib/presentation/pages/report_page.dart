@@ -272,7 +272,7 @@ class _ReportPageState extends ConsumerState<ReportPage>
               else
                 ...orders.take(5).map((order) => _buildTransactionItem(
                       'Booking #${order.id}',
-                      '${order.vehicle.name}',
+                      order.vehicle.name,
                       _formatCurrency(order.totalPrice),
                       _getStatusLabel(order.status),
                     )),
@@ -621,7 +621,7 @@ class _ReportPageState extends ConsumerState<ReportPage>
           ),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 12,
             ),
@@ -679,7 +679,7 @@ class _ReportPageState extends ConsumerState<ReportPage>
                 ),
                 Text(
                   description,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.textSecondary,
                     fontSize: 12,
                   ),
@@ -764,7 +764,7 @@ class _ReportPageState extends ConsumerState<ReportPage>
           const SizedBox(height: 4),
           Text(
             '${(percentage.isNaN ? 0 : percentage * 100).toInt()}% dari total',
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 11,
             ),
@@ -797,7 +797,7 @@ class _ReportPageState extends ConsumerState<ReportPage>
           ),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 11,
             ),
@@ -853,7 +853,7 @@ class _ReportPageState extends ConsumerState<ReportPage>
                 ),
                 Text(
                   rentCount,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.textSecondary,
                     fontSize: 12,
                   ),

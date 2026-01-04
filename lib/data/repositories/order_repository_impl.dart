@@ -9,8 +9,8 @@ class OrderRepositoryImpl implements OrderRepository {
   Future<Either<Exception, void>> cancelOrder(String orderId) async {
     try {
       // Note: Implement API call untuk production
-      await Future.delayed(Duration(seconds: 1));
-      return Right(null);
+      await Future.delayed(const Duration(seconds: 1));
+      return const Right(null);
     } on Exception catch (e) {
       return Left(e);
     }
@@ -90,8 +90,8 @@ class OrderRepositoryImpl implements OrderRepository {
   Future<Either<Exception, List<RentalOrderEntity>>> getUserOrders() async {
     try {
       // Note: Implement API call untuk production
-      await Future.delayed(Duration(seconds: 1));
-      return Right([]);
+      await Future.delayed(const Duration(seconds: 1));
+      return const Right([]);
     } on Exception catch (e) {
       return Left(e);
     }

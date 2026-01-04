@@ -121,34 +121,69 @@ class _LandingPageState extends State<LandingPage>
                           child: Column(
                             children: [
                               Container(
-                                width: 100,
-                                height: 100,
+                                width: 110,
+                                height: 110,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  gradient: LinearGradient(
+                                  gradient: const LinearGradient(
                                     colors: [
-                                      AppColors.electricBlue,
-                                      AppColors.electricBlue
-                                          .withValues(alpha: 0.6),
+                                      Color(0xFF00D4FF),
+                                      Color(0xFF0066FF),
+                                      Color(0xFF6B00FF),
                                     ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: AppColors.electricBlue
-                                          .withValues(alpha: 0.3),
+                                      color: const Color(0xFF00D4FF)
+                                          .withValues(alpha: 0.4),
                                       blurRadius: 30,
                                       spreadRadius: 5,
                                     ),
+                                    BoxShadow(
+                                      color: const Color(0xFF6B00FF)
+                                          .withValues(alpha: 0.3),
+                                      blurRadius: 40,
+                                      spreadRadius: 3,
+                                      offset: const Offset(0, 10),
+                                    ),
                                   ],
                                 ),
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.directions_car,
-                                    size: 50,
-                                    color: Colors.white,
-                                  ),
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    const Positioned(
+                                      top: 25,
+                                      child: Icon(
+                                        Icons.directions_car_rounded,
+                                        size: 42,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Positioned(
+                                      bottom: 22,
+                                      right: 24,
+                                      child: Container(
+                                        padding: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          shape: BoxShape.circle,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withValues(alpha: 0.2),
+                                              blurRadius: 4,
+                                            ),
+                                          ],
+                                        ),
+                                        child: const Icon(
+                                          Icons.key,
+                                          size: 16,
+                                          color: Color(0xFF0066FF),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               const SizedBox(height: 24),

@@ -39,13 +39,13 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.dark(
+            colorScheme: const ColorScheme.dark(
               primary: AppColors.electricBlue,
               onPrimary: Colors.white,
               surface: AppColors.darkCard,
               onSurface: AppColors.textPrimary,
             ),
-            dialogTheme: DialogThemeData(backgroundColor: AppColors.darkCard),
+            dialogTheme: const DialogThemeData(backgroundColor: AppColors.darkCard),
           ),
           child: child!,
         );
@@ -74,13 +74,13 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.dark(
+            colorScheme: const ColorScheme.dark(
               primary: AppColors.electricBlue,
               onPrimary: Colors.white,
               surface: AppColors.darkCard,
               onSurface: AppColors.textPrimary,
             ),
-            dialogTheme: DialogThemeData(backgroundColor: AppColors.darkCard),
+            dialogTheme: const DialogThemeData(backgroundColor: AppColors.darkCard),
           ),
           child: child!,
         );
@@ -111,7 +111,7 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
           // Header
           Row(
             children: [
-              Icon(Icons.calendar_month, color: AppColors.electricBlue),
+              const Icon(Icons.calendar_month, color: AppColors.electricBlue),
               const SizedBox(width: 12),
               Text(
                 'Pilih Tanggal Sewa',
@@ -146,11 +146,11 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
+                          const Row(
                             children: [
                               Icon(Icons.play_arrow,
                                   color: Colors.green, size: 16),
-                              const SizedBox(width: 4),
+                              SizedBox(width: 4),
                               Text(
                                 'Mulai',
                                 style: TextStyle(
@@ -163,7 +163,7 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
                           const SizedBox(height: 6),
                           Text(
                             dateFormat.format(startDate),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: AppColors.electricBlue,
                               fontSize: 13,
                               fontWeight: FontWeight.bold,
@@ -177,8 +177,8 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
               ),
 
               // Arrow
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8),
                 child: Icon(Icons.arrow_forward, color: AppColors.electricBlue),
               ),
 
@@ -201,10 +201,10 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
+                          const Row(
                             children: [
                               Icon(Icons.stop, color: Colors.red, size: 16),
-                              const SizedBox(width: 4),
+                              SizedBox(width: 4),
                               Text(
                                 'Sampai',
                                 style: TextStyle(
@@ -217,7 +217,7 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
                           const SizedBox(height: 6),
                           Text(
                             dateFormat.format(endDate),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: AppColors.electricBlue,
                               fontSize: 13,
                               fontWeight: FontWeight.bold,
@@ -247,11 +247,11 @@ class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.timer, color: AppColors.electricBlue, size: 18),
+                const Icon(Icons.timer, color: AppColors.electricBlue, size: 18),
                 const SizedBox(width: 8),
                 Text(
                   'Durasi: $days hari',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.electricBlue,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -305,13 +305,13 @@ class _CustomDateRangePickerDialogState
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.dark(
+            colorScheme: const ColorScheme.dark(
               primary: AppColors.electricBlue,
               onPrimary: Colors.white,
               surface: AppColors.darkCard,
               onSurface: AppColors.textPrimary,
             ),
-            dialogTheme: DialogThemeData(backgroundColor: AppColors.darkCard),
+            dialogTheme: const DialogThemeData(backgroundColor: AppColors.darkCard),
           ),
           child: child!,
         );
@@ -339,13 +339,13 @@ class _CustomDateRangePickerDialogState
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.dark(
+            colorScheme: const ColorScheme.dark(
               primary: AppColors.electricBlue,
               onPrimary: Colors.white,
               surface: AppColors.darkCard,
               onSurface: AppColors.textPrimary,
             ),
-            dialogTheme: DialogThemeData(backgroundColor: AppColors.darkCard),
+            dialogTheme: const DialogThemeData(backgroundColor: AppColors.darkCard),
           ),
           child: child!,
         );
@@ -374,7 +374,7 @@ class _CustomDateRangePickerDialogState
             // Header
             Row(
               children: [
-                Icon(Icons.calendar_month, color: AppColors.electricBlue),
+                const Icon(Icons.calendar_month, color: AppColors.electricBlue),
                 const SizedBox(width: 12),
                 Text(
                   'Pilih Tanggal Sewa',
@@ -409,11 +409,11 @@ class _CustomDateRangePickerDialogState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
+                            const Row(
                               children: [
                                 Icon(Icons.play_arrow,
                                     color: Colors.green, size: 16),
-                                const SizedBox(width: 4),
+                                SizedBox(width: 4),
                                 Text(
                                   'Mulai',
                                   style: TextStyle(
@@ -426,7 +426,7 @@ class _CustomDateRangePickerDialogState
                             const SizedBox(height: 8),
                             Text(
                               dateFormat.format(startDate),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: AppColors.electricBlue,
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -449,8 +449,8 @@ class _CustomDateRangePickerDialogState
                 ),
 
                 // Arrow
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
                   child:
                       Icon(Icons.arrow_forward, color: AppColors.electricBlue),
                 ),
@@ -474,10 +474,10 @@ class _CustomDateRangePickerDialogState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
+                            const Row(
                               children: [
                                 Icon(Icons.stop, color: Colors.red, size: 16),
-                                const SizedBox(width: 4),
+                                SizedBox(width: 4),
                                 Text(
                                   'Sampai',
                                   style: TextStyle(
@@ -490,7 +490,7 @@ class _CustomDateRangePickerDialogState
                             const SizedBox(height: 8),
                             Text(
                               dateFormat.format(endDate),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: AppColors.electricBlue,
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -529,11 +529,11 @@ class _CustomDateRangePickerDialogState
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.timer, color: AppColors.electricBlue, size: 20),
+                  const Icon(Icons.timer, color: AppColors.electricBlue, size: 20),
                   const SizedBox(width: 8),
                   Text(
                     'Durasi: $days hari',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: AppColors.electricBlue,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -553,7 +553,7 @@ class _CustomDateRangePickerDialogState
                     onPressed: () => Navigator.pop(context),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppColors.textSecondary,
-                      side: BorderSide(color: AppColors.borderColor),
+                      side: const BorderSide(color: AppColors.borderColor),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

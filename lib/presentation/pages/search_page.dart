@@ -17,11 +17,11 @@ class SearchPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.darkBg,
       appBar: AppBar(
-        title: Text('Cari Kendaraan'),
+        title: const Text('Cari Kendaraan'),
         elevation: 0,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             // Search Field
@@ -36,7 +36,7 @@ class SearchPage extends ConsumerWidget {
                   ref.read(searchQueryProvider.notifier).state = value;
                 },
                 style: Theme.of(context).textTheme.bodyLarge,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Cari nama atau merek kendaraan...',
                   hintStyle: TextStyle(color: AppColors.textSecondary),
                   prefixIcon: Icon(Icons.search, color: AppColors.electricBlue),
@@ -45,7 +45,7 @@ class SearchPage extends ConsumerWidget {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             // Search Results
             Expanded(
               child: searchQuery.isEmpty
@@ -53,17 +53,17 @@ class SearchPage extends ConsumerWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.search_outlined,
                             size: 80,
                             color: AppColors.textSecondary,
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           Text(
                             'Mulai pencarian',
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Text(
                             'Ketik nama atau merek kendaraan',
                             style: Theme.of(context).textTheme.bodyMedium,
@@ -78,17 +78,17 @@ class SearchPage extends ConsumerWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.directions_car_outlined,
                                   size: 80,
                                   color: AppColors.textSecondary,
                                 ),
-                                SizedBox(height: 16),
+                                const SizedBox(height: 16),
                                 Text(
                                   'Tidak ada hasil',
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
                                 Text(
                                   'Coba kata kunci lain',
                                   style: Theme.of(context).textTheme.bodyMedium,
@@ -100,7 +100,7 @@ class SearchPage extends ConsumerWidget {
 
                         return GridView.builder(
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             childAspectRatio: 0.75,
                             crossAxisSpacing: 12,
@@ -161,14 +161,14 @@ class SearchPage extends ConsumerWidget {
                           },
                         );
                       },
-                      loading: () => Center(
+                      loading: () => const Center(
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation(
                             AppColors.electricBlue,
                           ),
                         ),
                       ),
-                      error: (error, stackTrace) => Center(
+                      error: (error, stackTrace) => const Center(
                         child: Text('Gagal mencari kendaraan'),
                       ),
                     ),

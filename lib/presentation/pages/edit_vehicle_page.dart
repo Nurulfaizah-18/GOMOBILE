@@ -162,7 +162,7 @@ class _EditVehiclePageState extends ConsumerState<EditVehiclePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.lock_outline, size: 80, color: AppColors.error),
+              const Icon(Icons.lock_outline, size: 80, color: AppColors.error),
               const SizedBox(height: 16),
               const Text(
                 'Akses Ditolak',

@@ -106,47 +106,100 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
       children: [
         // Logo Container with glow effect
         Container(
-          width: 80,
-          height: 80,
+          width: 90,
+          height: 90,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [
-                AppColors.electricBlue,
-                AppColors.electricBlue.withValues(alpha: 0.6),
+                Color(0xFF00D4FF),
+                Color(0xFF0066FF),
+                Color(0xFF6B00FF),
               ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
             boxShadow: [
               BoxShadow(
-                color: AppColors.electricBlue.withValues(alpha: 0.5),
-                blurRadius: 20,
+                color: const Color(0xFF00D4FF).withValues(alpha: 0.4),
+                blurRadius: 25,
+                spreadRadius: 3,
+              ),
+              BoxShadow(
+                color: const Color(0xFF6B00FF).withValues(alpha: 0.3),
+                blurRadius: 35,
                 spreadRadius: 2,
+                offset: const Offset(0, 8),
               ),
             ],
           ),
-          child: const Icon(
-            Icons.directions_car,
-            size: 40,
-            color: Colors.white,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              const Positioned(
+                top: 20,
+                child: Icon(
+                  Icons.directions_car_rounded,
+                  size: 36,
+                  color: Colors.white,
+                ),
+              ),
+              Positioned(
+                bottom: 18,
+                right: 20,
+                child: Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.2),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.key,
+                    size: 13,
+                    color: Color(0xFF0066FF),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
-          'GOMOBILE',
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            letterSpacing: 4,
+        ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [Color(0xFF00D4FF), Color(0xFFFFFFFF)],
+          ).createShader(bounds),
+          child: const Text(
+            'GOMOBILE',
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+              letterSpacing: 4,
+            ),
           ),
         ),
-        const SizedBox(height: 4),
-        Text(
-          'Rental Kendaraan Terpercaya',
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.white.withValues(alpha: 0.8),
-            letterSpacing: 1,
+        const SizedBox(height: 6),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+          ),
+          child: const Text(
+            '🔑 Rental Kendaraan Terpercaya',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.5,
+            ),
           ),
         ),
       ],
@@ -184,7 +237,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
             // Avatar with gradient border
             Container(
               padding: const EdgeInsets.all(3),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
                   colors: [
@@ -196,7 +249,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
               child: Container(
                 width: 60,
                 height: 60,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.darkSurface,
                 ),
@@ -502,11 +555,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                   width: 1,
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.logout, color: AppColors.error, size: 20),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Text(
                     'Logout',
                     style: TextStyle(

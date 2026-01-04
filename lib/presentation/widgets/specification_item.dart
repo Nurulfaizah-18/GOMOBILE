@@ -16,7 +16,7 @@ class SpecificationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: AppColors.darkSurface,
         borderRadius: BorderRadius.circular(12),
@@ -25,13 +25,13 @@ class SpecificationItem extends StatelessWidget {
       child: Column(
         children: [
           Icon(icon, color: AppColors.electricBlue, size: 24),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             label,
             style: Theme.of(context).textTheme.labelSmall,
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             value,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(

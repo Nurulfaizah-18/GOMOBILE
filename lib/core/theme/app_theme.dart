@@ -14,7 +14,7 @@ class AppTheme {
         titleTextStyle: _titleTextStyle(),
       ),
       primaryColor: AppColors.electricBlue,
-      colorScheme: ColorScheme.dark(
+      colorScheme: const ColorScheme.dark(
         primary: AppColors.electricBlue,
         secondary: AppColors.accentBlue,
         surface: AppColors.darkSurface,
@@ -34,8 +34,8 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-          textStyle: TextStyle(
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+          textStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             fontFamily: 'Poppins',
@@ -45,30 +45,30 @@ class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.electricBlue,
-          side: BorderSide(color: AppColors.electricBlue, width: 1.5),
+          side: const BorderSide(color: AppColors.electricBlue, width: 1.5),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.darkCard,
-        contentPadding: EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.all(16),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.borderColor),
+          borderSide: const BorderSide(color: AppColors.borderColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.electricBlue, width: 2),
+          borderSide: const BorderSide(color: AppColors.electricBlue, width: 2),
         ),
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: AppColors.textSecondary,
           fontSize: 14,
           fontFamily: 'Poppins',
@@ -88,7 +88,7 @@ class AppTheme {
 
   // Text Styles
   static TextStyle _headlineLarge() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 32,
       fontWeight: FontWeight.w700,
       color: AppColors.textPrimary,
@@ -97,7 +97,7 @@ class AppTheme {
   }
 
   static TextStyle _headlineMedium() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w700,
       color: AppColors.textPrimary,
@@ -106,7 +106,7 @@ class AppTheme {
   }
 
   static TextStyle _titleTextStyle() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w600,
       color: AppColors.textPrimary,
@@ -115,7 +115,7 @@ class AppTheme {
   }
 
   static TextStyle _titleMedium() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w600,
       color: AppColors.textPrimary,
@@ -124,7 +124,7 @@ class AppTheme {
   }
 
   static TextStyle _bodyLarge() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w500,
       color: AppColors.textSecondary,
@@ -133,7 +133,7 @@ class AppTheme {
   }
 
   static TextStyle _bodyMedium() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w400,
       color: AppColors.textSecondary,
@@ -142,7 +142,7 @@ class AppTheme {
   }
 
   static TextStyle _labelSmall() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.w500,
       color: AppColors.textTertiary,

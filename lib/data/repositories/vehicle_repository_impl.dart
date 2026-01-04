@@ -68,7 +68,7 @@ class VehicleRepositoryImpl implements VehicleRepository {
     try {
       final vehicleModel = _entityToModel(vehicle);
       await remoteDataSource.addVehicle(vehicleModel);
-      return Right(null);
+      return const Right(null);
     } on Exception catch (e) {
       return Left(e);
     }
@@ -79,7 +79,7 @@ class VehicleRepositoryImpl implements VehicleRepository {
     try {
       final vehicleModel = _entityToModel(vehicle);
       await remoteDataSource.updateVehicle(vehicleModel);
-      return Right(null);
+      return const Right(null);
     } on Exception catch (e) {
       return Left(e);
     }
@@ -89,7 +89,7 @@ class VehicleRepositoryImpl implements VehicleRepository {
   Future<Either<Exception, void>> deleteVehicle(String vehicleId) async {
     try {
       await remoteDataSource.deleteVehicle(vehicleId);
-      return Right(null);
+      return const Right(null);
     } on Exception catch (e) {
       return Left(e);
     }

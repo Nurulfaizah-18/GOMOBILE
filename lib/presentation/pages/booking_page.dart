@@ -7,6 +7,7 @@ import '../../domain/entities/rental_order_entity.dart';
 import '../providers/order_provider.dart';
 import '../providers/notification_provider.dart';
 import '../widgets/date_range_picker_widget.dart';
+import '../widgets/vehicle_card.dart';
 import 'payment_page.dart';
 
 class BookingPage extends ConsumerStatefulWidget {
@@ -96,7 +97,7 @@ class _BookingPageState extends ConsumerState<BookingPage> {
       ref.read(adminNotificationProvider.notifier).addNotification(
         title: 'Booking Baru!',
         message:
-            '${_nameController.text} memesan ${widget.vehicle.name} untuk ${rentalDays} hari',
+            '${_nameController.text} memesan ${widget.vehicle.name} untuk $rentalDays hari',
         type: 'booking',
         data: {
           'orderId': newOrder.id,
@@ -131,11 +132,11 @@ class _BookingPageState extends ConsumerState<BookingPage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        title: Row(
+        title: const Row(
           children: [
             Icon(Icons.check_circle, color: AppColors.success, size: 28),
-            const SizedBox(width: 12),
-            const Expanded(
+            SizedBox(width: 12),
+            Expanded(
               child: Text(
                 'Booking Berhasil!',
                 style: TextStyle(
@@ -354,7 +355,7 @@ class _BookingPageState extends ConsumerState<BookingPage> {
             child: ElevatedButton.icon(
               onPressed: _isLoading ? null : _submitBooking,
               icon: _isLoading
-                  ? SizedBox(
+                  ? const SizedBox(
                       width: 20,
                       height: 20,
                       child: CircularProgressIndicator(
@@ -402,14 +403,11 @@ class _BookingPageState extends ConsumerState<BookingPage> {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    widget.vehicle.imageUrl,
+                  child: VehicleImage(
+                    imageUrl: widget.vehicle.imageUrl,
+                    width: 80,
+                    height: 80,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => Icon(
-                      Icons.directions_car,
-                      color: AppColors.electricBlue,
-                      size: 40,
-                    ),
                   ),
                 ),
               ),
@@ -491,7 +489,7 @@ class _BookingPageState extends ConsumerState<BookingPage> {
                   ],
                 ),
               ),
-              Icon(Icons.arrow_forward, color: AppColors.electricBlue),
+              const Icon(Icons.arrow_forward, color: AppColors.electricBlue),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -600,23 +598,23 @@ class _BookingPageState extends ConsumerState<BookingPage> {
         TextField(
           controller: _noteController,
           maxLines: 3,
-          style: TextStyle(color: AppColors.textPrimary),
+          style: const TextStyle(color: AppColors.textPrimary),
           decoration: InputDecoration(
             hintText: 'Tambahkan catatan khusus jika ada...',
-            hintStyle: TextStyle(color: AppColors.textSecondary),
+            hintStyle: const TextStyle(color: AppColors.textSecondary),
             filled: true,
             fillColor: AppColors.darkCard,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: AppColors.borderColor),
+              borderSide: const BorderSide(color: AppColors.borderColor),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: AppColors.borderColor),
+              borderSide: const BorderSide(color: AppColors.borderColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: AppColors.electricBlue, width: 2),
+              borderSide: const BorderSide(color: AppColors.electricBlue, width: 2),
             ),
             contentPadding: const EdgeInsets.all(12),
           ),
@@ -645,24 +643,24 @@ class _BookingPageState extends ConsumerState<BookingPage> {
         TextField(
           controller: controller,
           keyboardType: keyboardType,
-          style: TextStyle(color: AppColors.textPrimary),
+          style: const TextStyle(color: AppColors.textPrimary),
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: TextStyle(color: AppColors.textSecondary),
+            hintStyle: const TextStyle(color: AppColors.textSecondary),
             prefixIcon: Icon(icon, color: AppColors.electricBlue),
             filled: true,
             fillColor: AppColors.darkCard,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: AppColors.borderColor),
+              borderSide: const BorderSide(color: AppColors.borderColor),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: AppColors.borderColor),
+              borderSide: const BorderSide(color: AppColors.borderColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: AppColors.electricBlue, width: 2),
+              borderSide: const BorderSide(color: AppColors.electricBlue, width: 2),
             ),
             contentPadding: const EdgeInsets.all(12),
           ),
@@ -720,7 +718,7 @@ class _BookingPageState extends ConsumerState<BookingPage> {
             ],
           ),
           const SizedBox(height: 12),
-          Divider(color: AppColors.borderColor),
+          const Divider(color: AppColors.borderColor),
           const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -788,14 +786,14 @@ class _BookingPageState extends ConsumerState<BookingPage> {
               border: Border.all(
                   color: AppColors.electricBlue.withValues(alpha: 0.3)),
             ),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     Icon(Icons.info_outline,
                         color: AppColors.electricBlue, size: 18),
-                    const SizedBox(width: 8),
+                    SizedBox(width: 8),
                     Text(
                       'Informasi Transfer',
                       style: TextStyle(
@@ -806,7 +804,7 @@ class _BookingPageState extends ConsumerState<BookingPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 Text(
                   'Bank BCA: 1234567890\na.n. GOMOBILE Rental',
                   style: TextStyle(
@@ -814,7 +812,7 @@ class _BookingPageState extends ConsumerState<BookingPage> {
                     fontSize: 13,
                   ),
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: 4),
                 Text(
                   'Bank Mandiri: 0987654321\na.n. GOMOBILE Rental',
                   style: TextStyle(
@@ -833,10 +831,10 @@ class _BookingPageState extends ConsumerState<BookingPage> {
               borderRadius: BorderRadius.circular(8),
               border: Border.all(color: Colors.green.withValues(alpha: 0.3)),
             ),
-            child: Row(
+            child: const Row(
               children: [
                 Icon(Icons.info_outline, color: Colors.green, size: 18),
-                const SizedBox(width: 8),
+                SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     'Pembayaran dilakukan langsung saat pengambilan kendaraan',
@@ -896,8 +894,8 @@ class _BookingPageState extends ConsumerState<BookingPage> {
               ),
             ),
             if (isSelected)
-              Padding(
-                padding: const EdgeInsets.only(top: 4),
+              const Padding(
+                padding: EdgeInsets.only(top: 4),
                 child: Icon(
                   Icons.check_circle,
                   color: AppColors.electricBlue,

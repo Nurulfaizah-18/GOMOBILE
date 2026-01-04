@@ -4,6 +4,7 @@ import '../../core/theme/app_colors.dart';
 import '../../domain/entities/vehicle_entity.dart';
 import '../providers/vehicle_provider.dart';
 import '../providers/auth_provider.dart';
+import '../widgets/vehicle_card.dart';
 import 'add_vehicle_page.dart';
 import 'edit_vehicle_page.dart';
 
@@ -40,7 +41,7 @@ class VehicleManagementPage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.lock_outline, size: 80, color: AppColors.error),
+              const Icon(Icons.lock_outline, size: 80, color: AppColors.error),
               const SizedBox(height: 16),
               const Text(
                 'Akses Ditolak',
@@ -113,13 +114,13 @@ class VehicleManagementPage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.error_outline,
                 size: 64,
                 color: AppColors.error,
               ),
               const SizedBox(height: 16),
-              Text(
+              const Text(
                 'Gagal memuat kendaraan',
                 style: TextStyle(
                   color: AppColors.textPrimary,
@@ -250,17 +251,11 @@ class VehicleManagementPage extends ConsumerWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    vehicle.imageUrl,
+                  child: VehicleImage(
+                    imageUrl: vehicle.imageUrl,
+                    width: 80,
+                    height: 80,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      color: AppColors.darkSurface,
-                      child: const Icon(
-                        Icons.directions_car,
-                        size: 40,
-                        color: AppColors.electricBlue,
-                      ),
-                    ),
                   ),
                 ),
               ),

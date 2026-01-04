@@ -131,28 +131,65 @@ class _SplashPageState extends State<SplashPage>
                       height: 100,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [
-                            AppColors.electricBlue,
-                            AppColors.electricBlue.withValues(alpha: 0.6),
+                            Color(0xFF00D4FF),
+                            Color(0xFF0066FF),
+                            Color(0xFF6B00FF),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.electricBlue.withValues(alpha: 0.5),
+                            color: const Color(0xFF00D4FF).withValues(alpha: 0.5),
                             blurRadius: 30,
                             spreadRadius: 10,
                           ),
+                          BoxShadow(
+                            color: const Color(0xFF6B00FF).withValues(alpha: 0.3),
+                            blurRadius: 40,
+                            spreadRadius: 5,
+                            offset: const Offset(0, 10),
+                          ),
                         ],
                       ),
-                      child: const Center(
-                        child: Icon(
-                          Icons.directions_car,
-                          size: 50,
-                          color: Colors.white,
-                        ),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          // Car icon
+                          const Positioned(
+                            top: 22,
+                            child: Icon(
+                              Icons.directions_car_rounded,
+                              size: 38,
+                              color: Colors.white,
+                            ),
+                          ),
+                          // Key icon overlay
+                          Positioned(
+                            bottom: 18,
+                            right: 22,
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withValues(alpha: 0.2),
+                                    blurRadius: 4,
+                                  ),
+                                ],
+                              ),
+                              child: const Icon(
+                                Icons.key,
+                                size: 14,
+                                color: Color(0xFF0066FF),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -194,7 +231,7 @@ class _SplashPageState extends State<SplashPage>
           ),
 
           // Loading indicator
-          Positioned(
+          const Positioned(
             bottom: 20,
             left: 0,
             right: 0,

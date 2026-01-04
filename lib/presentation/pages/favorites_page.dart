@@ -18,15 +18,15 @@ class FavoritesPage extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: AppColors.darkSurface,
         elevation: 0,
-        title: Text('Kendaraan Favorit'),
+        title: const Text('Kendaraan Favorit'),
         centerTitle: false,
       ),
       body: favorites.isEmpty
           ? _buildEmptyState(context)
           : Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 0.75,
                   crossAxisSpacing: 12,
@@ -109,19 +109,19 @@ class FavoritesPage extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.favorite_border,
             size: 80,
             color: AppColors.textSecondary,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             'Belum Ada Favorit',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: AppColors.textSecondary,
                 ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Tambahkan kendaraan ke favorit untuk melihatnya di sini',
             style: Theme.of(context).textTheme.bodyMedium,

@@ -117,20 +117,20 @@ class DashboardHeader extends StatelessWidget {
                       size: 20,
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: TextField(
                       enabled: false,
                       decoration: InputDecoration(
                         hintText: 'Cari kendaraan...',
                         hintStyle:
-                            const TextStyle(color: AppColors.textSecondary),
+                            TextStyle(color: AppColors.textSecondary),
                         border: InputBorder.none,
-                        contentPadding: const EdgeInsets.symmetric(
+                        contentPadding: EdgeInsets.symmetric(
                           horizontal: 12,
                           vertical: 12,
                         ),
                       ),
-                      style: const TextStyle(color: AppColors.textPrimary),
+                      style: TextStyle(color: AppColors.textPrimary),
                     ),
                   ),
                   Padding(

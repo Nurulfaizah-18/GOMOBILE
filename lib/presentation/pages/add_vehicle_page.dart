@@ -48,6 +48,7 @@ class _AddVehiclePageState extends ConsumerState<AddVehiclePage> {
         });
       }
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: Gagal memilih gambar - $e'),
@@ -71,6 +72,7 @@ class _AddVehiclePageState extends ConsumerState<AddVehiclePage> {
         });
       }
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: Gagal mengambil foto - $e'),
@@ -247,7 +249,7 @@ class _AddVehiclePageState extends ConsumerState<AddVehiclePage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.check_circle,
                             size: 48,
                             color: AppColors.success,
@@ -273,7 +275,7 @@ class _AddVehiclePageState extends ConsumerState<AddVehiclePage> {
                       onTap: () => setState(() => _selectedImage = null),
                       child: Container(
                         padding: const EdgeInsets.all(4),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: AppColors.error,
                           shape: BoxShape.circle,
                         ),
@@ -385,7 +387,7 @@ class _AddVehiclePageState extends ConsumerState<AddVehiclePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.lock_outline, size: 80, color: AppColors.error),
+              const Icon(Icons.lock_outline, size: 80, color: AppColors.error),
               const SizedBox(height: 16),
               const Text(
                 'Akses Ditolak',

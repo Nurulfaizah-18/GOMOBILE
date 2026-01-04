@@ -95,7 +95,7 @@ class InfoCard extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 12,
                 color: AppColors.textSecondary,
               ),
@@ -165,7 +165,7 @@ class FeatureCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             description,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 13,
               color: AppColors.textSecondary,
               height: 1.5,
@@ -220,7 +220,7 @@ class BookingSummaryCard extends StatelessWidget {
               ),
               Text(
                 licensePlate,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12,
                   color: AppColors.textSecondary,
                   fontWeight: FontWeight.w500,
@@ -259,7 +259,7 @@ class BookingSummaryCard extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   'Total: $totalDays hari',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12,
                     color: AppColors.textSecondary,
                   ),
@@ -273,7 +273,7 @@ class BookingSummaryCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'Total Pembayaran',
                 style: TextStyle(
                   fontSize: 14,
