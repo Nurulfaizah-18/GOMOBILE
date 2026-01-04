@@ -314,3 +314,5 @@ Dibuat dengan ❤️ menggunakan Flutter & Dart
 ---
 
 **Catatan**: Mock data sudah tersedia di `VehicleModel.getMockVehicles()`. Untuk production, integrasikan dengan real API endpoint.
+#   G O M O B I L E  
+ 
