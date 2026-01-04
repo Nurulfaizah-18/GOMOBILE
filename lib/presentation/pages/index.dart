@@ -1,0 +1,22 @@
+// Pages Export File
+export 'main_page.dart';
+export 'vehicle_detail_page.dart';
+export 'search_page.dart';
+export 'cart_page.dart';
+export 'booking_page.dart';
+export 'add_vehicle_page.dart';
+export 'edit_vehicle_page.dart';
+export 'vehicle_management_page.dart';
+export 'orders_page.dart';
+export 'profile_page.dart';
+export 'landing_page.dart';
+export 'splash_page.dart';
+export 'user_dashboard_page.dart';
+export 'admin_dashboard_page.dart';
+export 'login_page.dart';
+export 'register_page.dart';
+export 'favorites_page.dart';
+export 'rental_form_page.dart';
+export 'payment_page.dart';
+export 'user_management_page.dart';
+export 'report_page.dart';
