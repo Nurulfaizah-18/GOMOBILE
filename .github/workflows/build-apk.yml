@@ -46,20 +46,20 @@ jobs:
         timeout-minutes: 15
       
       - name: Rename APK
-        run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/rental-kendaraan.apk
+        run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/GOMOBILE.apk
       
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: GOMOBILE-apk
-          path: build/app/outputs/flutter-apk/rental-kendaraan.apk
+          path: build/app/outputs/flutter-apk/GOMOBILE.apk
           retention-days: 30
       
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: build/app/outputs/flutter-apk/rental-kendaraan.apk
+          files: build/app/outputs/flutter-apk/GOMOBILE.apk
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
