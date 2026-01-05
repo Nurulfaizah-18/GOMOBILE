@@ -1,10 +1,10 @@
 {
   "roots": [
-    "gomobile"
+    "rental_kendaraan"
   ],
   "packages": [
     {
-      "name": "gomobile",
+      "name": "rental_kendaraan",
       "version": "1.0.1+2",
       "dependencies": [
         "dartz",
