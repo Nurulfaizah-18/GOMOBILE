@@ -31,6 +31,13 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Generate debug keystore if missing
+        run: |
+          if [ ! -f ~/.android/debug.keystore ]; then
+            mkdir -p ~/.android
+            keytool -genkey -v -keystore ~/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -dname "CN=Android Debug,O=Android,C=US" -keyalg RSA -keysize 2048 -validity 10000
+          fi
+
       - name: Build APK
         run: flutter build apk --release
 
